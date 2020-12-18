@@ -1,28 +1,69 @@
-# [Password Generator](#project-title)
+# [Password Generator](#project-intro)
 
-Project summary described here...
+This project produces a randomly generated password based on user selected criteria. Through a browser-based interface the user will select from the following criteria and character sets to build their password:
+- Number of characters or length;
+- Uppercase characters;
+- Lowercase characters;
+- Numbers; and
+- Special Characters.
+
+Clicking the 'Generate Password' button starts the process and will guide the user to create a password that is at least 8 characters long, but no more than 128 characters long. The user must also select at least one character set to be used in the password generation process. Upon completing the criteria selection process the password will be generated and printed in the browser window.
 
 ## [Table of Contents](#toc)
 
-[Project Title](#project-title)
-
-[Table of Contents](#toc)
-
-[Goals and Methods](#goals-methods)
-
-[Technologies](#technologies)
-
-[Deployed Link](#deployed-link)
-
-[Authors](#authors)
-
-[Acknowledgments](#acknowledgments)
-
-[License](#license)
+| |||
+| :------------------------------ | :-------------------------| :-----------------------------------|
+| [Project Introduction](#project-intro) | [Table of Contents](#toc) | [Goals and Methods](#goals-methods) |
+| [Technologies](#technologies)   | [Deployed Link](#deployed-link) | [Authors](#authors) |
+| [Acknowledgments](#acknowledgments) | [License](#license) |
+---
 
 ## [Goals and Methods](#goals-methods)
 
-Describe project goals and methods...
+The top level goal of the project is a broswer based password generator built using functions and object oriented programing. Cryptographic strength of the password was not a concern for this effort. The password generation process can be summarized as follows:
+- Using brower prompts determine how long the password will be and which character sets to use;
+- Capture the password length in a variable for later use;
+- Add the desired character set(s) to an array as they are selected by the user;
+- Use a random number generator to pick a single character from the above array and append it to a string. Repeat this process a number of times equal to the password length; and
+- Print the password string to the browser window.
+
+An object named passwordBot contains all the data, variables, and functions needed to complete the above process. This includes four arrays each storing one of the possible character sets. These arrays will be drawn from and added a fifth array. Code Snippet 1 illustrates the user interaction and array building process:
+
+Snippet 1:
+```javascript
+setParameters: function() {
+    this.pwLength = prompt("Enter a number that is at least 8 and no more than 128 to select password length.");
+    if (confirm("Do you want uppercase characters in your password?")) {
+      this.arrayConstructor(this.upperCase);
+    }
+    ...
+  ```
+
+Selecting 'OK' in the prompt window calls the arrayConstructor function that will add the relavent character set to an array called selectorAry, which will be drawn from later, that is a parameter of the passwordBot object. This function is shown in Snippet 2:
+
+Snippet 2:
+```javascript
+  arrayConstructor: function (ary) {
+    this.selectorAry = this.selectorAry.concat(ary);
+  },
+```
+Code Snippet 1 and 2 together outline the selectorAry building process. Once selectorAry is built a random number generator will pick characters from it and add them to a string that represents the password. Snippet 3 shows the process. The variables pwLength and password are parameters of the object passwordBot that store the desired password length and the password itself respectively:
+
+Snippet 3:
+```javascript
+  pwConstructor: function() {
+    while (this.password.length < this.pwLength) {
+      this.password = this.password.concat([this.randomPick()]);
+    }      
+  },
+  randomPick: function () {
+    var randomIndex = Math.floor(Math.random() * this.selectorAry.length);
+    return this.selectorAry[randomIndex];
+  }
+```
+Note that two functions were used to complete this part of the task. This approach was used to break out repeated blocks of work and improve code readability. At this point in the process the password is printed to the browser window.
+
+
 
 
 ## [Technologies](#technologies) 
@@ -30,17 +71,17 @@ Describe project goals and methods...
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-* [Bootstrap 5](https://getbootstrap.com/)
+* [Bootstrap](https://getbootstrap.com/)
 
 ## [Deployed Link](#deployed-link)
 
-* [See Live Site](https://coleman-buffa.github.io/password-genereator/)
+* [See Live Site](https://coleman-buffa.github.io/password-generator/)
 
 ## [Authors](#authors)
 
 Coleman Buffa
 
-- [Link to Git Hub](https://github.com/coleman-buffa/password-genereator)
+- [Link to Git Hub](https://coleman-buffa.github.io/password-genereator/)
 - [Link to LinkedIn](https://www.linkedin.com/in/coleman-buffa-0a12a5201/)
 
 ## [Acknowledgments](#acknowledgments)

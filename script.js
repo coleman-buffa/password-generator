@@ -83,11 +83,10 @@ var generateBtn = document.querySelector("#generate");
 // Add event listener to generate button.
 generateBtn.addEventListener("click", writePassword);
 
-// This function fires on button click, builds the password, and writes it to the window.
+// This function runs on button click, builds the password, and writes it to the window.
 function writePassword() {
   passwordBot.setParameters();
   passwordBot.pwConstructor();
   var passwordText = document.querySelector("#password");
   passwordText.value = passwordBot.password;
-  passwordBot.printBotStatus();
 }
