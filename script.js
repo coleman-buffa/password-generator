@@ -19,13 +19,13 @@ var passwordBot = {
   numberAry: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
   specialChar: ["!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\"", "]", "^", "_", "`", "{", "|", "}", "~", "]", ","],
   selectorAry: [], //built from user prompt by arrayConstructor();
-  pwLength: 0, //set from user prompt  
+  pwLength: 0, //set from user prompt 
+  password: "", 
   
   //series of prompts to user to select arrays and password length. assume they follow the rules for first implementation
 
   setParameters: function() {
     this.pwLength = prompt("How long would you like your password? Please choose a number 8-128.");
-    console.log("pwLength = " + this.pwLength);
     if (confirm("Do you want uppercase characters in your password?")) {
       this.arrayConstructor(this.upperCase);
     }
@@ -43,7 +43,12 @@ var passwordBot = {
 
   arrayConstructor: function(ary) {
     this.selectorAry = this.selectorAry.concat(ary);
-    console.log(this.selectorAry);
+  },
+
+  printBotStatus: function () {
+    console.log("selectorAry contents: " + this.selectorAry);
+    console.log("pwLength = " + this.pwLength);
+    console.log("password: " + this.password);
   },
 
   pwConstructor: function() {
@@ -55,6 +60,7 @@ var passwordBot = {
 
 //Testing purposes only. This call saves having to hook into existing HTML for first implementation.
 passwordBot.setParameters();
+passwordBot.printBotStatus();
 
 // Pseudocoding and project planning
 // Build a password generator that takes user input into account:
