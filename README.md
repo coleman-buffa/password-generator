@@ -34,18 +34,18 @@ Describe project goals and methods...
 
 ## [Deployed Link](#deployed-link)
 
-* [See Live Site](https://coleman-buffa.github.io/responsive-portfolio/index.html)
+* [See Live Site](https://coleman-buffa.github.io/password-genereator/)
 
 ## [Authors](#authors)
 
 Coleman Buffa
 
-- [Link to Git Hub](https://github.com/coleman-buffa/responsive-portfolio)
+- [Link to Git Hub](https://github.com/coleman-buffa/password-genereator)
 - [Link to LinkedIn](https://www.linkedin.com/in/coleman-buffa-0a12a5201/)
 
 ## [Acknowledgments](#acknowledgments)
 
-* Many thanks to UCB Bootcamp Instruction Staff
+* Many thanks to UCB Bootcamp Instructional Staff
 
 ## [License](#license)
 
