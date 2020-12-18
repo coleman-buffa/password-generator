@@ -1,31 +1,16 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
-
-// Write password to the #password input
-function writePassword() {
-  // var password = generatePassword();
-  // var passwordText = document.querySelector("#password");
-
-  // passwordText.value = password;
-
-}
-
-//Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
 var passwordBot = {
   upperCase: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
   lowerCase: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
   numberAry: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
   specialChar: ["!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\"", "]", "^", "_", "`", "{", "|", "}", "~", "]", ","],
-  selectorAry: [], //built from user prompt by arrayConstructor();
-  pwLength: 0, //set from user prompt 
+  selectorAry: [],
+  pwLength: 0,
   password: "", 
   
-  //series of prompts to user to select arrays and password length. assume they follow the rules for first implementation
-
+  //Series of prompts that ask the user to select a password length and select
+  //which character sets to include. 
   setParameters: function() {
-    this.pwLength = prompt("How long would you like your password? Please choose a number 8-128.");
+    this.pwLength = prompt("Enter a number that is at least 8 and no more than 128 to select password length.");
     if (confirm("Do you want uppercase characters in your password?")) {
       this.arrayConstructor(this.upperCase);
     }
@@ -38,36 +23,66 @@ var passwordBot = {
     if (confirm("Do you want special characters in your password?")) {
       this.arrayConstructor(this.specialChar);
     }
-
+    if (this.selectorAry.length === 0 || this.pwLength <8 || this.pwLength > 128) {
+      alert("Please select a password length of at least 8 and no more than 128 characters, and select at least one character set to be included in your password.");
+      this.resetBot();
+      this.setParameters();
+    }
   },
-
-  arrayConstructor: function(ary) {
+  //Helper function inside setParameters() that adds user selected character sets to a
+  //master array that will be picked from randomly to build the password.
+  arrayConstructor: function (ary) {
     this.selectorAry = this.selectorAry.concat(ary);
   },
 
+  //Utility function that console logs vital passwordBot object parameters to aid in debugging.
   printBotStatus: function () {
     console.log("selectorAry contents: " + this.selectorAry);
     console.log("pwLength = " + this.pwLength);
     console.log("password: " + this.password);
   },
 
+  //Helper function inside setParameters() that resets passwordBot object parameters
+  //in the event the user asks for an illegal password. This allows the password criteria
+  //selection process to start with a clean slate.
+  resetBot: function () {
+    this.selectorAry = [];
+    this.pwLength = 0;
+    this.password = "";
+  }
+
+  //Builds the password from user provided criteria by selecting a random character
+  //from the desired character set
   pwConstructor: function() {
     while (this.password.length < this.pwLength) {
       this.password = this.password.concat([this.randomPick()]);
     }      
   },
 
+  //Helper function inside pwConstructor() that provides a randomly generated character
+  //from the master array.
   randomPick: function () {
     var randomIndex = Math.floor(Math.random() * this.selectorAry.length);
     return this.selectorAry[randomIndex];
   }
 
 }
+//Create generate button that will serve as starting trigger.
+var generateBtn = document.querySelector("#generate");
+//Add event listener to generate button.
+generateBtn.addEventListener("click", writePassword);
 
-//Testing purposes only. This call saves having to hook into existing HTML for first implementation.
-passwordBot.setParameters();
-passwordBot.pwConstructor();
-passwordBot.printBotStatus();
+//This function fires on button click, builds the password, and writes it to the window.
+function writePassword() {
+  passwordBot.setParameters();
+  passwordBot.pwConstructor();
+  var passwordText = document.querySelector("#password");
+  passwordText.value = passwordBot.password;
+  passwordBot.printBotStatus();
+
+}
+
+
 
 // Pseudocoding and project planning
 // Build a password generator that takes user input into account:
