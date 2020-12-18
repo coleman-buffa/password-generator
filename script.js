@@ -52,14 +52,21 @@ var passwordBot = {
   },
 
   pwConstructor: function() {
-    //builds the password by generating a random number and appending it onto password
-    //potentially use a while loop -> while pwlength < desired length add a letter    
+    while (this.password.length < this.pwLength) {
+      this.password = this.password.concat([this.randomPick()]);
+    }      
+  },
+
+  randomPick: function () {
+    var randomIndex = Math.floor(Math.random() * this.selectorAry.length);
+    return this.selectorAry[randomIndex];
   }
 
 }
 
 //Testing purposes only. This call saves having to hook into existing HTML for first implementation.
 passwordBot.setParameters();
+passwordBot.pwConstructor();
 passwordBot.printBotStatus();
 
 // Pseudocoding and project planning
