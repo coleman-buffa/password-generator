@@ -85,13 +85,13 @@ Figure 4: The user chooses to include lowercase alphabet characters
 ![Figure 4](./assets/set-lowercase.png)
 
 Figure 5: The user chooses to include numbers
-![Figure 5./](assets/set-numbers.png)
+![Figure 5](./assets/set-numbers.png)
 
 Figure 6: The user chooses to include special characters
-![Figure 6]./(assets/set-specials.png)
+![Figure 6](./assets/set-specials.png)
 
 Figure 7: The user is presented with their newly generated password
-![Figure 7](as./sets/password-output.png)
+![Figure 7](./assets/password-output.png)
 
 ## Technologies 
 
