@@ -73,25 +73,25 @@ Note that two functions were used to complete this part of the task. This approa
 Thee following photos document the password generation process:
 
 Figure 1: What the user will be greeted with when they visit the site
-![](/assets/default-state.png)
+![](/assets/default-state.png?raw=true)
 
 Figure 2: The user selects their desired password length
-![](/assets/set-pw-length.png)
+![](/assets/set-pw-length.png?raw=true)
 
 Figure 3: The user chooses to include uppercase alphabet characters
-![](/assets/set-uppercase.png)
+![](/assets/set-uppercase.png?raw=true)
 
 Figure 4: The user chooses to include lowercase alphabet characters
-![](/assets/set-lowercase.png)
+![](/assets/set-lowercase.png?raw=true)
 
 Figure 5: The user chooses to include numbers
-![](/assets/set-numbers.png)
+![](/assets/set-numbers.png?raw=true)
 
 Figure 6: The user chooses to include special characters
-![](/assets/set-specials.png)
+![](/assets/set-specials.png?raw=true)
 
 Figure 7: The user is presented with their newly generated password
-![](/assets/password-output.png)
+![](/assets/password-output.png?raw=true)
 
 ## Technologies 
 
