@@ -73,7 +73,7 @@ var passwordBot = {
   // from the master array.
   randomPick: function () {
     var randomIndex = Math.floor(Math.random() * this.selectorAry.length);
-    return this.selectorAry[randomIndex];
+    return this.selectorAry[randomIndex];    
   }
 
 }
